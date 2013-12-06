@@ -1,54 +1,40 @@
 package org.eclipse.graphiti.fx.ga;
 
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.graphiti.fx.internal.util.DataTypeTransformation;
-import org.eclipse.graphiti.mm.algorithms.GraphicsAlgorithm;
-import org.eclipse.graphiti.mm.algorithms.Polygon;
-import org.eclipse.graphiti.services.Graphiti;
-
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
+import org.eclipse.graphiti.mm.algorithms.Rectangle;
 
 ;
 
-public class FxRectangle extends Rectangle {
+public class FxRectangle extends
+		FxGraphicsAlgorithm<javafx.scene.shape.Rectangle> {
 
-	private org.eclipse.graphiti.mm.algorithms.Rectangle rectangle;
+	private Rectangle rectangle;
+	private javafx.scene.shape.Rectangle fxRectangle;
 
 	public FxRectangle(org.eclipse.graphiti.mm.algorithms.Rectangle rectangle) {
-		super();
+		super(rectangle, new javafx.scene.shape.Rectangle());
 		this.rectangle = rectangle;
+		this.fxRectangle = getShape();
+		
+		initialize();
+	}
 
-		// Location in case of child GA
-		if (rectangle.getPictogramElement() == null) {
-			setX(rectangle.getX());
-			setY(rectangle.getY());
-		}
+	@Override
+	protected void setX(double x) {
+		fxRectangle.setX(x);
+	}
 
-		// Dimensions
-		setWidth(rectangle.getWidth());
-		setHeight(rectangle.getHeight());
+	@Override
+	protected void setY(double y) {
+		fxRectangle.setY(y);
+	}
 
-		// Background
-		if (rectangle.getFilled()) {
-			org.eclipse.graphiti.mm.algorithms.styles.Color backgroundColor = Graphiti
-					.getGaService().getBackgroundColor(rectangle, true);
-			if (backgroundColor != null) {
-				setFill(DataTypeTransformation.toFxColor(backgroundColor));
-			}
-			setOpacity(1d - Graphiti.getGaService().getTransparency(rectangle, true));
-		}
+	@Override
+	protected void setWidth(double width) {
+		fxRectangle.setWidth(width);
+	}
 
-		// Foreground
-		if (rectangle.getLineVisible()) {
-			org.eclipse.graphiti.mm.algorithms.styles.Color foregroundColor = Graphiti
-					.getGaService().getForegroundColor(rectangle, true);
-			if (foregroundColor != null) {
-				setStroke(DataTypeTransformation.toFxColor(foregroundColor));
-			}
-		}
-
-		// Line width
-		setStrokeWidth(Graphiti.getGaService().getLineWidth(rectangle, true));
+	@Override
+	protected void setHeight(double height) {
+		fxRectangle.setHeight(height);
 	}
 }

@@ -4,6 +4,7 @@ import javafx.scene.layout.Pane;
 
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.graphiti.fx.ga.FxGraphicsAlgorithm;
 import org.eclipse.graphiti.fx.ga.FxPolygon;
 import org.eclipse.graphiti.fx.ga.FxRectangle;
 import org.eclipse.graphiti.fx.ga.FxText;
@@ -17,7 +18,7 @@ import org.eclipse.graphiti.mm.pictograms.Shape;
 public class FxShape extends Pane {
 
 	private Shape shape;
-	private javafx.scene.shape.Shape fxShape = null;
+	private FxGraphicsAlgorithm<?> fxShape = null;
 	private Pane shapePane;
 
 	public FxShape(Shape shape) {
@@ -60,7 +61,7 @@ public class FxShape extends Pane {
 			return;
 		}
 
-		getChildren().add(fxShape);
+		getChildren().add(fxShape.getShape());
 
 		// GA children
 		EList<GraphicsAlgorithm> children = ga.getGraphicsAlgorithmChildren();

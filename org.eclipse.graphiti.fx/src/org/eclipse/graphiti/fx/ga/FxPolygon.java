@@ -2,29 +2,26 @@ package org.eclipse.graphiti.fx.ga;
 
 import java.util.ArrayList;
 
-import javafx.scene.shape.Polygon;
-import javafx.scene.shape.StrokeLineJoin;
-
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.graphiti.fx.internal.util.DataTypeTransformation;
+import org.eclipse.graphiti.mm.algorithms.Polygon;
 import org.eclipse.graphiti.mm.algorithms.styles.Point;
-import org.eclipse.graphiti.services.Graphiti;
 
-;
+public class FxPolygon extends FxGraphicsAlgorithm<javafx.scene.shape.Polygon> {
 
-public class FxPolygon extends Polygon {
+	private Polygon polygon;
+	private javafx.scene.shape.Polygon fxPolygon;
 
-	private org.eclipse.graphiti.mm.algorithms.Polygon polygon;
-
-	public FxPolygon(org.eclipse.graphiti.mm.algorithms.Polygon polygon) {
-		super();
+	public FxPolygon(Polygon polygon) {
+		super(polygon, new javafx.scene.shape.Polygon());
 		this.polygon = polygon;
+		this.fxPolygon = getShape();
 
-//		// Location in case of child GA
-//		if (polygon.getPictogramElement() == null) {
-//			setX(polygon.getX());
-//			setY(polygon.getY());
-//		}
+		initialize();
+	}
+	
+	@Override
+	protected void initialize() {
+		super.initialize();
 
 		// Points
 		EList<Point> points = polygon.getPoints();
@@ -33,31 +30,26 @@ public class FxPolygon extends Polygon {
 			list.add(new Double(point.getX()));
 			list.add(new Double(point.getY()));
 		}
-		getPoints().addAll(list);
+		fxPolygon.getPoints().addAll(list);
+	}
 
-		// Background
-		if (polygon.getFilled()) {
-			org.eclipse.graphiti.mm.algorithms.styles.Color backgroundColor = Graphiti
-					.getGaService().getBackgroundColor(polygon, true);
-			if (backgroundColor != null) {
-				setFill(DataTypeTransformation.toFxColor(backgroundColor));
-			}
-			setOpacity(1d - Graphiti.getGaService().getTransparency(polygon, true));
-		}
+	@Override
+	protected void setX(double x) {
+		// Nothing to do
+	}
 
-		// Foreground
-		if (polygon.getLineVisible()) {
-			org.eclipse.graphiti.mm.algorithms.styles.Color foregroundColor = Graphiti
-					.getGaService().getForegroundColor(polygon, true);
-			if (foregroundColor != null) {
-				setStroke(DataTypeTransformation.toFxColor(foregroundColor));
-			}
-		}
-		
-		// Line width
-		setStrokeWidth(Graphiti.getGaService().getLineWidth(polygon, true));
-		
-		// Other
-		setStrokeLineJoin(StrokeLineJoin.ROUND);
+	@Override
+	protected void setY(double y) {
+		// Nothing to do
+	}
+
+	@Override
+	protected void setWidth(double width) {
+		// Nothing to do
+	}
+
+	@Override
+	protected void setHeight(double height) {
+		// Nothing to do
 	}
 }
