@@ -1,4 +1,4 @@
-package myfxviewpart;
+package org.eclipse.graphiti.fx;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;

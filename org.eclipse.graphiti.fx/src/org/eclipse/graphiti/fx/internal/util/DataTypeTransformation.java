@@ -1,4 +1,4 @@
-package myfxviewpart;
+package org.eclipse.graphiti.fx.internal.util;
 
 import org.eclipse.graphiti.util.IColorConstant;
 

@@ -1,4 +1,4 @@
-package myfxviewpart.views;
+package org.eclipse.graphiti.fx.ga;
 
 import org.eclipse.graphiti.mm.algorithms.GraphicsAlgorithm;
 

@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Graphiti UI for JavaFX
 Bundle-SymbolicName: org.eclipse.graphiti.fx;singleton:=true
 Bundle-Version: 0.0.1.qualifier
-Bundle-Activator: myfxviewpart.Activator
+Bundle-Activator: org.eclipse.graphiti.fx.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  at.bestsolution.efxclipse.runtime.workbench3,

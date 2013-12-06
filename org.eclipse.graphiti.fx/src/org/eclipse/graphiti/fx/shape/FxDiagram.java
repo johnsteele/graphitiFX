@@ -1,8 +1,8 @@
-package myfxviewpart.views;
+package org.eclipse.graphiti.fx.shape;
 
-import myfxviewpart.DataTypeTransformation;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.graphiti.fx.internal.util.DataTypeTransformation;
 import org.eclipse.graphiti.internal.util.LookManager;
 import org.eclipse.graphiti.mm.algorithms.GraphicsAlgorithm;
 import org.eclipse.graphiti.mm.pictograms.Diagram;

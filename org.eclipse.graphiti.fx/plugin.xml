@@ -5,10 +5,10 @@
    <extension
          point="org.eclipse.ui.views">
       <view
-            name="My FX View"
+            name="Graphiti FX Test View"
             icon="icons/sample.gif"
-            class="myfxviewpart.views.MyViewPart"
-            id="myfxviewpart.views.MyViewPart">
+            class="myfxviewpart.views.TestViewPart"
+            id="myfxviewpart.views.GFXViewPart">
       </view>
    </extension>
 

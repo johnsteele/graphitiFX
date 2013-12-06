@@ -1,11 +1,11 @@
-package myfxviewpart.views;
+package org.eclipse.graphiti.fx.ga;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.graphiti.fx.internal.util.DataTypeTransformation;
 import org.eclipse.graphiti.mm.algorithms.GraphicsAlgorithm;
 import org.eclipse.graphiti.mm.algorithms.Polygon;
 import org.eclipse.graphiti.services.Graphiti;
 
-import myfxviewpart.DataTypeTransformation;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 

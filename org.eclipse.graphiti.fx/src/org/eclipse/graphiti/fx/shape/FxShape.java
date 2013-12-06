@@ -1,8 +1,12 @@
-package myfxviewpart.views;
+package org.eclipse.graphiti.fx.shape;
 
 import javafx.scene.layout.Pane;
 
+
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.graphiti.fx.ga.FxPolygon;
+import org.eclipse.graphiti.fx.ga.FxRectangle;
+import org.eclipse.graphiti.fx.ga.FxText;
 import org.eclipse.graphiti.mm.algorithms.GraphicsAlgorithm;
 import org.eclipse.graphiti.mm.algorithms.Polygon;
 import org.eclipse.graphiti.mm.algorithms.Rectangle;

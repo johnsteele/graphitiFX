@@ -1,10 +1,10 @@
-package myfxviewpart.views;
+package org.eclipse.graphiti.fx.ga;
 
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
-import myfxviewpart.DataTypeTransformation;
 
+import org.eclipse.graphiti.fx.internal.util.DataTypeTransformation;
 import org.eclipse.graphiti.services.Graphiti;
 
 ;

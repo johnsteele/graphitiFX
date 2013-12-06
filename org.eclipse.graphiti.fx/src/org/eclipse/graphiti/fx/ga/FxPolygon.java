@@ -1,12 +1,12 @@
-package myfxviewpart.views;
+package org.eclipse.graphiti.fx.ga;
 
 import java.util.ArrayList;
 
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.StrokeLineJoin;
-import myfxviewpart.DataTypeTransformation;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.graphiti.fx.internal.util.DataTypeTransformation;
 import org.eclipse.graphiti.mm.algorithms.styles.Point;
 import org.eclipse.graphiti.services.Graphiti;
 

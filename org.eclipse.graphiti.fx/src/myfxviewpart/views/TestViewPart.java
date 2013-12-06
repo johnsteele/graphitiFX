@@ -13,13 +13,14 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.graphiti.fx.shape.FxDiagram;
 import org.eclipse.graphiti.mm.pictograms.Diagram;
 import org.eclipse.graphiti.services.Graphiti;
 import org.eclipse.ui.IFileEditorMapping;
 
 import at.bestsolution.efxclipse.runtime.workbench3.FXViewPart;
 
-public class MyViewPart extends FXViewPart {
+public class TestViewPart extends FXViewPart {
 
 	private ResourceSet resourceSet = null;
 	
