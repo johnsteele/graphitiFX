@@ -1,5 +1,8 @@
 package org.eclipse.graphiti.fx.ga;
 
+import javafx.geometry.HPos;
+import javafx.geometry.VPos;
+import javafx.scene.control.Label;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 
@@ -7,6 +10,7 @@ import org.eclipse.graphiti.fx.internal.util.DataTypeTransformation;
 import org.eclipse.graphiti.mm.algorithms.Text;
 import org.eclipse.graphiti.services.Graphiti;
 
+import com.sun.javafx.scene.control.skin.LabelSkin;
 
 public class FxText extends FxGraphicsAlgorithm<javafx.scene.text.Text> {
 
@@ -19,10 +23,12 @@ public class FxText extends FxGraphicsAlgorithm<javafx.scene.text.Text> {
 		this.fxText = getShape();
 
 		initialize();
-		
+
 		fxText.setText(text.getValue());
+		fxText.setTextOrigin(VPos.CENTER);
+		fxText.snapshot(null, null);
 	}
-	
+
 	@Override
 	protected void initialize() {
 		super.initialize();
@@ -37,13 +43,15 @@ public class FxText extends FxGraphicsAlgorithm<javafx.scene.text.Text> {
 	@Override
 	protected void setX(double x) {
 		// TODO text has no size --> locate correctly
-		fxText.setX(text.getX() + text.getWidth() / 2);
+		// fxText.setTextOrigin(HPos.LEFT);
+		fxText.setX(new Double(text.getX()) + (new Double(text.getWidth()) / 2d)
+				- (new LabelSkinAccess(text.getValue()).computePrefWidth(1) / 2d));
 	}
 
 	@Override
 	protected void setY(double y) {
 		// TODO text has no size --> locate correctly
-		fxText.setY(text.getY() + text.getHeight() / 2);
+		fxText.setY(new Double(text.getY()) + (new Double(text.getHeight()) / 2d));
 	}
 
 	@Override
@@ -54,5 +62,22 @@ public class FxText extends FxGraphicsAlgorithm<javafx.scene.text.Text> {
 	@Override
 	protected void setHeight(double height) {
 		// Text has no height
+	}
+}
+
+/*
+ * TODO Workaround for not existing API to calculate width of string, see https://forums.oracle.com/thread/2341245
+ */
+class LabelSkinAccess extends LabelSkin {
+
+	public LabelSkinAccess(String text) {
+		super(new Label(text));
+	}
+	
+	
+	@Override
+	public double computePrefWidth(double arg0) {
+		// Public rewrite
+		return super.computePrefWidth(arg0);
 	}
 }
