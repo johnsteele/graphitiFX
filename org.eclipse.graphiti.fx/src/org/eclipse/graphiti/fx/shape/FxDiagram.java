@@ -6,10 +6,14 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.graphiti.fx.connection.FxConnection;
+import org.eclipse.graphiti.fx.connection.FxFreeFormConnection;
 import org.eclipse.graphiti.fx.internal.util.DataTypeTransformation;
 import org.eclipse.graphiti.internal.util.LookManager;
 import org.eclipse.graphiti.mm.algorithms.GraphicsAlgorithm;
+import org.eclipse.graphiti.mm.pictograms.Connection;
 import org.eclipse.graphiti.mm.pictograms.Diagram;
+import org.eclipse.graphiti.mm.pictograms.FreeFormConnection;
 import org.eclipse.graphiti.mm.pictograms.Shape;
 import org.eclipse.graphiti.services.Graphiti;
 import org.eclipse.graphiti.util.ILook;
@@ -18,7 +22,7 @@ public class FxDiagram extends Pane {
 
 	private Pane backgroundPane;
 	private Pane shapePane;
-	// private Pane connectionPane;
+	private Pane connectionPane;
 
 	Diagram diagram;
 
@@ -44,10 +48,29 @@ public class FxDiagram extends Pane {
 		for (Shape shape : shapes) {
 			addShape(new FxShape(shape));
 		}
+
+		connectionPane = new Pane();
+		getChildren().add(connectionPane);
+
+		EList<Connection> connections = diagram.getConnections();
+		for (Connection connection : connections) {
+			addConnection(connection);
+		}
 	}
 
-	public void addShape(FxShape shape) {
+	private void addShape(FxShape shape) {
 		shapePane.getChildren().add(shape);
+	}
+
+	private void addConnection(Connection connection) {
+		FxConnection<?> fxConnection = null;
+		if (connection instanceof FreeFormConnection) {
+			fxConnection = new FxFreeFormConnection(connection);
+		} else {
+			System.err.println("ERROR: Not yet supported connection: " + connection.getClass().getName());
+			return;
+		}
+		connectionPane.getChildren().add(fxConnection.getShape());
 	}
 
 	private void paintGrid(Canvas canvas) {

@@ -17,7 +17,7 @@ import org.eclipse.graphiti.mm.pictograms.Shape;
 public class FxShape extends Pane {
 
 	private Shape shape;
-	private FxGraphicsAlgorithm<?> fxShape = null;
+	private FxGraphicsAlgorithm<?> fxGraphicsAlgorithm = null;
 	private Pane shapePane;
 
 	public FxShape(Shape shape) {
@@ -49,17 +49,17 @@ public class FxShape extends Pane {
 
 	private void addGraphicsAlgorithm(GraphicsAlgorithm ga) {
 		if (ga instanceof Rectangle) {
-			fxShape = new FxRectangle((Rectangle) ga);
+			fxGraphicsAlgorithm = new FxRectangle((Rectangle) ga);
 		} else if (ga instanceof Polygon) {
-			fxShape = new FxPolygon((Polygon) ga);
+			fxGraphicsAlgorithm = new FxPolygon((Polygon) ga);
 		} else if (ga instanceof Text) {
-			fxShape = new FxText((Text) ga);
+			fxGraphicsAlgorithm = new FxText((Text) ga);
 		} else {
-			System.err.println("Not yet supported GA: " + ga.getClass().getName());
+			System.err.println("ERROR: Not yet supported GA: " + ga.getClass().getName());
 			return;
 		}
 
-		getChildren().add(fxShape.getShape());
+		getChildren().add(fxGraphicsAlgorithm.getShape());
 
 		// GA children
 		EList<GraphicsAlgorithm> children = ga.getGraphicsAlgorithmChildren();
