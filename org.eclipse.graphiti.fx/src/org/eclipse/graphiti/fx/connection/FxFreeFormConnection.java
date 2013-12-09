@@ -1,6 +1,7 @@
 package org.eclipse.graphiti.fx.connection;
 
 import javafx.collections.ObservableList;
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.Polyline;
 
 import org.eclipse.graphiti.datatypes.ILocation;
@@ -8,8 +9,8 @@ import org.eclipse.graphiti.mm.pictograms.Connection;
 
 public class FxFreeFormConnection extends FxConnection<Polyline> {
 
-	public FxFreeFormConnection(Connection connection) {
-		super(connection, new Polyline());
+	public FxFreeFormConnection(Connection connection, Pane connectionPane) {
+		super(connection, new Polyline(), connectionPane);
 
 		initialize();
 	}
@@ -24,7 +25,6 @@ public class FxFreeFormConnection extends FxConnection<Polyline> {
 	@Override
 	protected void setEnd(ILocation location) {
 		ObservableList<Double> points = getShape().getPoints();
-		int size = points.size();
 		getShape().getPoints().add(new Double(location.getX()));
 		getShape().getPoints().add(new Double(location.getY()));
 	}

@@ -65,7 +65,7 @@ public class FxDiagram extends Pane {
 	private void addConnection(Connection connection) {
 		FxConnection<?> fxConnection = null;
 		if (connection instanceof FreeFormConnection) {
-			fxConnection = new FxFreeFormConnection(connection);
+			fxConnection = new FxFreeFormConnection(connection, connectionPane);
 		} else {
 			System.err.println("ERROR: Not yet supported connection: " + connection.getClass().getName());
 			return;

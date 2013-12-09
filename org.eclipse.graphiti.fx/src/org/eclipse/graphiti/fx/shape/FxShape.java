@@ -3,12 +3,16 @@ package org.eclipse.graphiti.fx.shape;
 import javafx.scene.layout.Pane;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.graphiti.fx.ga.FxEllipse;
 import org.eclipse.graphiti.fx.ga.FxGraphicsAlgorithm;
 import org.eclipse.graphiti.fx.ga.FxPolygon;
+import org.eclipse.graphiti.fx.ga.FxPolyline;
 import org.eclipse.graphiti.fx.ga.FxRectangle;
 import org.eclipse.graphiti.fx.ga.FxText;
+import org.eclipse.graphiti.mm.algorithms.Ellipse;
 import org.eclipse.graphiti.mm.algorithms.GraphicsAlgorithm;
 import org.eclipse.graphiti.mm.algorithms.Polygon;
+import org.eclipse.graphiti.mm.algorithms.Polyline;
 import org.eclipse.graphiti.mm.algorithms.Rectangle;
 import org.eclipse.graphiti.mm.algorithms.Text;
 import org.eclipse.graphiti.mm.pictograms.ContainerShape;
@@ -52,8 +56,12 @@ public class FxShape extends Pane {
 			fxGraphicsAlgorithm = new FxRectangle((Rectangle) ga);
 		} else if (ga instanceof Polygon) {
 			fxGraphicsAlgorithm = new FxPolygon((Polygon) ga);
+		} else if (ga instanceof Polyline) {
+			fxGraphicsAlgorithm = new FxPolyline((Polyline) ga);
 		} else if (ga instanceof Text) {
 			fxGraphicsAlgorithm = new FxText((Text) ga);
+		} else if (ga instanceof Ellipse) {
+			fxGraphicsAlgorithm = new FxEllipse((Ellipse) ga);
 		} else {
 			System.err.println("ERROR: Not yet supported GA: " + ga.getClass().getName());
 			return;
