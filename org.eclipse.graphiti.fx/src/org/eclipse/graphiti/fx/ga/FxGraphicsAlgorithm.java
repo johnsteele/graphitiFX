@@ -30,23 +30,21 @@ public abstract class FxGraphicsAlgorithm<T extends Shape> {
 
 		// Background
 		if (Graphiti.getGaService().isFilled(graphicsAlgorithm, true)) {
-			org.eclipse.graphiti.mm.algorithms.styles.Color backgroundColor = Graphiti
-					.getGaService().getBackgroundColor(graphicsAlgorithm, true);
+			org.eclipse.graphiti.mm.algorithms.styles.Color backgroundColor = Graphiti.getGaService()
+					.getBackgroundColor(graphicsAlgorithm, true);
 			shape.setFill(DataTypeTransformation.toFxColor(backgroundColor));
-			shape.setOpacity(1d - Graphiti.getGaService().getTransparency(
-					graphicsAlgorithm, true));
+			shape.setOpacity(1d - Graphiti.getGaService().getTransparency(graphicsAlgorithm, true));
 		}
 
 		// Foreground
 		if (Graphiti.getGaService().isLineVisible(graphicsAlgorithm, true)) {
-			org.eclipse.graphiti.mm.algorithms.styles.Color foregroundColor = Graphiti
-					.getGaService().getForegroundColor(graphicsAlgorithm, true);
+			org.eclipse.graphiti.mm.algorithms.styles.Color foregroundColor = Graphiti.getGaService()
+					.getForegroundColor(graphicsAlgorithm, true);
 			shape.setStroke(DataTypeTransformation.toFxColor(foregroundColor));
 		}
 
 		// Line width
-		shape.setStrokeWidth(Graphiti.getGaService().getLineWidth(
-				graphicsAlgorithm, true));
+		shape.setStrokeWidth(Graphiti.getGaService().getLineWidth(graphicsAlgorithm, true));
 	}
 
 	public T getShape() {

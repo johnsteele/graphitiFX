@@ -4,8 +4,7 @@ import org.eclipse.graphiti.mm.algorithms.Rectangle;
 
 ;
 
-public class FxRectangle extends
-		FxGraphicsAlgorithm<javafx.scene.shape.Rectangle> {
+public class FxRectangle extends FxGraphicsAlgorithm<javafx.scene.shape.Rectangle> {
 
 	private Rectangle rectangle;
 	private javafx.scene.shape.Rectangle fxRectangle;
@@ -14,7 +13,7 @@ public class FxRectangle extends
 		super(rectangle, new javafx.scene.shape.Rectangle());
 		this.rectangle = rectangle;
 		this.fxRectangle = getShape();
-		
+
 		initialize();
 	}
 

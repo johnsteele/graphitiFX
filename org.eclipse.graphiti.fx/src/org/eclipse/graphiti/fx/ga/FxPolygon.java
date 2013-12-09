@@ -18,7 +18,7 @@ public class FxPolygon extends FxGraphicsAlgorithm<javafx.scene.shape.Polygon> {
 
 		initialize();
 	}
-	
+
 	@Override
 	protected void initialize() {
 		super.initialize();

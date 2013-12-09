@@ -2,7 +2,6 @@ package org.eclipse.graphiti.fx.shape;
 
 import javafx.scene.layout.Pane;
 
-
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.graphiti.fx.ga.FxGraphicsAlgorithm;
 import org.eclipse.graphiti.fx.ga.FxPolygon;
@@ -56,8 +55,7 @@ public class FxShape extends Pane {
 		} else if (ga instanceof Text) {
 			fxShape = new FxText((Text) ga);
 		} else {
-			System.err.println("Not yet supported GA: "
-					+ ga.getClass().getName());
+			System.err.println("Not yet supported GA: " + ga.getClass().getName());
 			return;
 		}
 

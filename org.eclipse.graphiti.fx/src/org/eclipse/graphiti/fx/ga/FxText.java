@@ -1,12 +1,9 @@
 package org.eclipse.graphiti.fx.ga;
 
-import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.control.Label;
 import javafx.scene.text.Font;
-import javafx.scene.text.TextAlignment;
 
-import org.eclipse.graphiti.fx.internal.util.DataTypeTransformation;
 import org.eclipse.graphiti.mm.algorithms.Text;
 import org.eclipse.graphiti.services.Graphiti;
 
@@ -35,8 +32,7 @@ public class FxText extends FxGraphicsAlgorithm<javafx.scene.text.Text> {
 
 		// TODO alignment
 		// setTextAlignment(TextAlignment.CENTER);
-		org.eclipse.graphiti.mm.algorithms.styles.Font font = Graphiti
-				.getGaService().getFont(text, true);
+		org.eclipse.graphiti.mm.algorithms.styles.Font font = Graphiti.getGaService().getFont(text, true);
 		fxText.setFont(Font.font(font.getName(), font.getSize()));
 	}
 
@@ -66,15 +62,15 @@ public class FxText extends FxGraphicsAlgorithm<javafx.scene.text.Text> {
 }
 
 /*
- * TODO Workaround for not existing API to calculate width of string, see https://forums.oracle.com/thread/2341245
+ * TODO Workaround for not existing API to calculate width of string, see
+ * https://forums.oracle.com/thread/2341245
  */
 class LabelSkinAccess extends LabelSkin {
 
 	public LabelSkinAccess(String text) {
 		super(new Label(text));
 	}
-	
-	
+
 	@Override
 	public double computePrefWidth(double arg0) {
 		// Public rewrite
